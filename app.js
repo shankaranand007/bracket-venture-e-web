@@ -43,13 +43,14 @@ var app = express();
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
+app.use(express.static( path.join(__dirname, 'food')));
 app.engine('html',require('ejs').renderFile);
 app.set('view engine','html');
 
 app.use(connection(mysql,{
-host:"localhost",
-user:"root",
-password:"",
+host:"172.31.56.156",
+user:"userVH3",
+password:"oYmv1hWAaMmvp1BB",
 database:"food"
 },'request'));
 app.use(cors())

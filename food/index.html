@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <base href="./">
+
+  <title>Ecommerce</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="assets/images/logo.png" type="image/png">
+
+  <link rel='stylesheet prefetch' href='assets/css/bootstrap.min.css'>
+
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/check-radio.css">
+<link rel="stylesheet" href="styles.e3ea0f168aa11dd0e078.css"></head>
+
+<body>
+  <app-root></app-root>
+  <script src='assets/js/jquery.min.js'></script>
+  <script src='assets/js/bootstrap.min.js'></script>
+
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <script>
+    function isNumber(evt) {
+      evt = (evt) ? evt : window.event;
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+      }
+      return true;
+
+    }
+
+  </script>
+  <script>
+
+    // pk_test_xIVHX9YD7aMc4JyHliB9WGlJ
+    // pk_live_P1SJzm8fOOPxXz3QacRWe1OI
+
+    var handler = StripeCheckout.configure({
+      key: 'pk_test_xIVHX9YD7aMc4JyHliB9WGlJ',
+      image: 'assets/images/logo.png',
+      locale: 'auto',
+      token: function (token) {
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+        var total_amount = localStorage.getItem('total');
+        var admin_id = localStorage.getItem('admin_id');
+        var order_id = localStorage.getItem('order_id');
+        // console.log(token);
+        $.ajax({
+
+          'type': 'POST',
+          'url': 'http://breacket-venture-e-web-bracket-venture-e-web.1d35.starter-us-east-1.openshiftapps.com/payment/stripe',
+          'data': { chargeAmount: total_amount, stripeToken: token.id, stripeTokenType: 'card', stripeEmail: 'asapark007', admin_id: admin_id, ordered_id: order_id },
+          success: function (data) {
+            console.log(data);
+            localStorage.setItem('var_id', data.var_code);
+            localStorage.setItem('var_msg', data.msg);
+          },
+          error: function (jqXHR, status, err) {
+            alert("error");
+            alert(err);
+
+          },
+          complete: function (jqXHR, status) {
+          }
+
+        });
+      }
+    });
+    //document.getElementById('customButton').addEventListener('click', function(e) {
+    // Open Checkout with further options:
+    function card() {
+      // var total_amount = $('#chargeAmount').val();
+      // localStorage.setItem('total',total_amount);
+      var total_amount = localStorage.getItem('total')
+      var amt = total_amount * 100;
+      handler.open({
+        name: 'Sample',
+        description: '',
+        amount: amt,
+        currency: "usd"
+      });
+    }
+    //   e.preventDefault();
+    // });
+    // Close Checkout on page navigation:
+    window.addEventListener('popstate', function () {
+      handler.close();
+    });
+  </script>
+  <!-- <script type="text/javascript">
+    $(document).on("contextmenu", function (e) {        
+        e.preventDefault();
+    });
+    $(document).keydown(function (event) {
+        if (event.keyCode == 123) { // Prevent F12
+            return false;
+        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I        
+            return false;
+        }
+    });
+    </script> -->
+<script type="text/javascript" src="runtime.ec2944dd8b20ec099bf3.js"></script><script type="text/javascript" src="polyfills.66329502b133f6f13afb.js"></script><script type="text/javascript" src="main.c3a85bd368947477ad62.js"></script></body>
+
+</html>

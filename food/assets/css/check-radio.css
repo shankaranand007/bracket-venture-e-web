@@ -1,0 +1,14 @@
+@media only screen and (min-width:50em){
+  .Form{padding:5em}
+}
+ .Form-section {margin-right:-1em;margin-bottom:1.5em}
+ .Form-section+.Form-section {padding-top:1em;border-top:1px dotted rgba(0,0,0,0.1)}
+ .Form-title {display:block;font-weight:bold;margin-bottom:.5em}
+ .Form-label--tick {line-height: 18px;margin: 0 0 0 15px;}
+ .Form-label-radio,.Form-label-checkbox{position:absolute;z-index:-1;width:1px;height:1px;opacity:0;overflow:hidden}
+ .Form-label-radio+.Form-label-text,.Form-label-checkbox+.Form-label-text{cursor:pointer; position: relative;margin-right: 26px;}
+.Form-label-radio+.Form-label-text::before,.Form-label-checkbox+.Form-label-text::before {content: "\f1db";font-family: FontAwesome;font-style: normal;font-weight: normal;text-decoration: inherit;color: #555;font-size: 24px;position: absolute;top: 0;left: 0;}
+ .Form-label-radio+.Form-label-text:hover::before,.Form-label-checkbox+.Form-label-text:hover::before{border-color:black !important;box-shadow:0 0 0 0 black !important}
+ .Form-label-radio:checked+.Form-label-text::before,.Form-label-checkbox:checked+.Form-label-text::before {content: "\f058";font-family: FontAwesome;font-style: normal;font-weight: normal;text-decoration: inherit;color: #000;font-size: 24px;position: absolute;top: 0;left: 0;}
+ .Form-label-radio:focus+.Form-label-text::before,.Form-label-checkbox:focus+.Form-label-text::before,.Form-label-radio:active+.Form-label-text::before,.Form-label-checkbox:active+.Form-label-text::before{border:0;box-shadow:0 0 0 0;}
+ .Form-label-radio+.Form-label-text::before{border-radius:100%}
