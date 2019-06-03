@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Orders</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+</head>
+<body style="background:#fff; font-family: 'Lato', sans-serif; margin:10px;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="max-width:660px; margin:1rem auto; padding:0;">
+  <tr>
+    <td style="margin:0; padding:0;"><a href="#"><img src="http://mentorconnect.smaatapps.io/mentor_connect/asset/images/logo.jpg" alt="" title=""></a></td>
+  </tr>
+  <tr>
+    <td style="background:#f0fbf3; border:solid 1px #02aed4; border-radius:5px; margin:15px 0 0 0; padding:15px; display:block;">
+    <h1 style="font:normal 20px/20px 'Lato', sans-serif; color:#48b758; margin:0; padding:0;">Thanks for ordering on BondooriWings!</h1>
+    <p style="font:normal 13px/14px 'Lato', sans-serif; color:#666; margin:10px 0 0 0; padding:0;">Here is your order details.</p>   
+    </td>
+  </tr>
+  <tr>
+    <td style="background:#fafafa; border:solid 1px #ccc; border-radius:5px; margin:15px 0 0 0; padding:10px; display:block;">
+   
+    <table width="100%" style="margin-top:30px;">
+    <tr>
+    <th colspan="3" align="left" style="border-bottom:solid 1px #ccc; margin:0; padding:0;"><h2 style="font:bold 20px/20px 'Lato', sans-serif; color:#666; margin:0; padding:0 0 15px 0;"><i style="color:#9e9e9e; font-size:26px; margin-right:5px;" class="fa fa-usd"></i> Your order Details</h2></th>
+    </tr>
+
+    <tr>
+    <td style=" border-bottom:solid 1px #ccc;margin:0; padding:5px 0 0 0; color:#666; font:normal 16px/16px 'Lato', sans-serif;"><b>Item Name</b></td>
+    <td style="border-bottom:solid 1px #ccc;height:30px; margin:0; padding:5px 0 0 0;"><b>Qty</b></td>
+    <td style="border-bottom:solid 1px #ccc;margin:0; padding:0; color:#666; font:normal 16px/16px 'Lato', sans-serif;" align="right"><b>Amount</b></td>
+    </tr>
+    <% for(var i=0; i < order.length; i++) { %>
+
+    <tr>
+    <td style="margin:0; padding:5px 0 0 0; color:#666; font:normal 16px/16px 'Lato', sans-serif;"><%= order[i].item_name %></td>
+    <td style="height:30px; margin:0; padding:5px 0 0 0;"><%= order[i].quantity %></td>
+    <td style="margin:0; padding:0; color:#666; font:normal 16px/16px 'Lato', sans-serif;" align="right">$<%= (order[i].item_price * order[i].quantity ).toFixed(2) %></td>
+    </tr>
+    
+    <% } %>
+    <br>
+    <tr style="margin-top: 10px;">
+    <td style="margin:0; padding:0; color:#666; font:normal 16px/16px 'Lato', sans-serif;"></td>
+    <td style="margin:0; padding:0;">Delivery Charge:</td>
+    <td style="margin:0; padding:0; color:#666; font:normal 16px/16px 'Lato', sans-serif;" align="right">$<%= Number(delivery_charge).toFixed(2) %></td>
+    </tr>
+    <br>
+    <tr style="margin-top: 10px;">
+    <td style="margin:0; padding:0; color:#666; font:normal 16px/16px 'Lato', sans-serif;"></td>
+    <td style="margin:0; padding:0;">Coupon Name:</td>
+    <td style="margin:0; padding:0; color:#666; font:normal 16px/16px 'Lato', sans-serif;" align="right"><%= cop_name %></td>
+    </tr>
+    <br>
+        <tr style="margin-top: 10px;">
+    <td style="margin:0; padding:0; color:#666; font:normal 16px/16px 'Lato', sans-serif;"></td>
+    <td style="margin:0; padding:0;"><%= cop_value %></td>
+    <td style="margin:0; padding:0; color:#666; font:normal 16px/16px 'Lato', sans-serif;" align="right"><%= cop_value2 %></td>
+    </tr>
+    <br>
+
+      <tr>
+    <td style="margin:0; padding:0; color:#666; font:normal 16px/16px 'Lato', sans-serif;"></td>
+    <td style="margin:0; padding:0;">Total:</td>
+    <td style="margin:0; padding:0; color:#666; font:normal 16px/16px 'Lato', sans-serif;" align="right">$<%= Number(total_amount).toFixed(2) %></td>
+    </tr>
+    </table>
+    </td>
+  </tr>
+ 
+  <tr>
+    <td style="background:#fafafa; border:solid 1px #ccc; border-radius:5px; padding:10px;">
+    <p style="color:#666; font:normal 15px/20px 'Lato', sans-serif; margin:5px 0 0 0; padding:0;">Got questions? Visit our <a href="#" style="color:#ffc107; font-weight:bold;">Help Center</a>.</p>
+    <p style="color:#666; font:normal 15px/20px 'Lato', sans-serif; margin:0; padding:0;">Feel free to email us directly <a href="#" style="color:#ffc107; font-weight:bold;">bonboori@gmail.fm</a>, or call us at <a href="#" style="color:#000099; font-weight:bold;"> +1 410-964-2339</a>.</p>
+    </td>
+  </tr>
+  <tr>
+  <td style="padding:10px 0; margin:0;">
+  <p style="text-align:center; color:#666; font:bold 12px/18px 'Lato', sans-serif;">Our mailing address is: BONDOORI WINGS,8765 CENTRE PARK DR. #12B , COLUMBIA,MARYLAND 21045</p>
+  </td>
+  </tr>
+</table>
+</body>
+</html>
